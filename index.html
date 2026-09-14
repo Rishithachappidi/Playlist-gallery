@@ -1,164 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Melodify</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<link rel="stylesheet" href="styless.css"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="theme-color" content="#0b0912"/>
+  <meta name="description" content="Melodify — a modern personal music playlist experience."/>
+  <title>Melodify — Your Sound, Your Space</title>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styless.css"/>
 </head>
 <body>
-
-<!-- SIDEBAR -->
-<aside class="sb">
-  <div class="logo"><i class="fa-solid fa-music"></i><span>Melodify</span></div>
-  <nav class="navlinks">
-    <div class="ni active" data-sec="home"><i class="fa-solid fa-house"></i><span>Home</span></div>
-    <div class="ni" data-sec="search"><i class="fa-solid fa-magnifying-glass"></i><span>Search</span></div>
-    <div class="ni" data-sec="favourites"><i class="fa-solid fa-heart"></i><span>Favourites</span></div>
-    <div class="ni" data-sec="playlist"><i class="fa-solid fa-list-music"></i><span>My Playlist</span></div>
+<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+<aside class="sb" id="sidebar">
+  <div class="brand"><div class="brand-mark"><i class="fa-solid fa-wave-square"></i></div><div class="brand-copy"><span class="brand-name">Melodify</span><span class="brand-tag">your sound, your space</span></div></div>
+  <div class="nav-label">DISCOVER</div>
+  <nav class="navlinks" aria-label="Main navigation">
+    <button class="ni active" data-sec="home"><i class="fa-solid fa-house"></i><span>Home</span></button>
+    <button class="ni" data-sec="search"><i class="fa-solid fa-magnifying-glass"></i><span>Search</span></button>
+    <button class="ni" data-sec="favourites"><i class="fa-solid fa-heart"></i><span>Liked Songs</span><b class="nav-count" id="favNavCount"></b></button>
+    <button class="ni" data-sec="playlist"><i class="fa-solid fa-list-ul"></i><span>My Playlist</span><b class="nav-count" id="plNavCount"></b></button>
   </nav>
+  <div class="sidebar-card"><div class="sidebar-card-icon"><i class="fa-solid fa-headphones-simple"></i></div><strong>Make it yours</strong><p>Like songs and build a playlist that stays with you.</p></div>
+  <div class="sidebar-bottom"><button class="mini-link" onclick="openShortcuts()"><i class="fa-regular fa-keyboard"></i> Shortcuts</button><span class="version">v2.0</span></div>
 </aside>
-
-<!-- MAIN -->
 <main class="main" id="mainEl">
+  <header class="topbar"><button class="mobile-menu" onclick="toggleSidebar()" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button><div class="top-search" onclick="goSec('search');setTimeout(()=>document.getElementById('searchQ')?.focus(),100)"><i class="fa-solid fa-magnifying-glass"></i><span>Search songs, artists, albums...</span><kbd>Ctrl K</kbd></div><div class="top-actions"><button class="icon-btn" onclick="refreshHero()" title="Surprise me"><i class="fa-solid fa-shuffle"></i></button><div class="profile-pill"><span class="profile-dot">R</span><span>Rishitha</span></div></div></header>
 
-  <!-- HOME -->
   <section class="sec active" id="home">
-    <div class="hero">
-      <div class="hero-text">
-        <p class="htag" id="heroTag">🔥 Featured</p>
-        <h1 class="htitle" id="heroTitle">—</h1>
-        <p class="hsub" id="heroSub">—</p>
-        <div class="hbtns">
-          <button class="btnp" onclick="playHero()"><i class="fa-solid fa-play"></i> Play Now</button>
-          <button class="btno" onclick="refreshHero()"><i class="fa-solid fa-rotate"></i> New Pick</button>
-        </div>
-      </div>
-      <div class="himg-wrap">
-        <img id="heroImg" src="" alt="" class="himg"/>
-        <div class="hglow"></div>
-      </div>
-    </div>
-
-    <!-- Ticker -->
-    <div class="ticker-wrap">
-      <span class="tlabel"><i class="fa-solid fa-fire"></i>Trending</span>
-      <div class="ttrack" id="tickerEl"></div>
-    </div>
-
-    <!-- Language Chips -->
-    <div class="chips" id="chipsEl"></div>
-
-    <!-- Song of the Day -->
-    <div class="sh"><h2>🎵 Song of the Day</h2></div>
-    <div class="sotd" id="sotdEl"></div>
-
-    <!-- Recently Played -->
-    <div class="sh" id="recentSh" style="display:none"><h2>🕘 Recently Played</h2></div>
-    <div class="agrid" id="recentGrid"></div>
-
-    <!-- Stats -->
-    <div class="sh" id="statsSh" style="display:none"><h2>📊 Your Listening Stats</h2></div>
-    <div class="statgrid" id="statsGrid"></div>
-
-    <!-- Albums -->
-    <div class="sh"><h2 id="trendH">Featured Albums</h2></div>
-    <div class="agrid" id="trendGrid"></div>
-    <div class="sh"><h2 id="moreH">More Albums</h2></div>
-    <div class="agrid" id="moreGrid"></div>
+    <div class="welcome"><div><p class="eyebrow">YOUR PERSONAL MUSIC SPACE</p><h1>Good music.<br><span>Better moments.</span></h1><p class="welcome-sub">Discover songs across the languages you love.</p></div><div class="welcome-meta"><span><i class="fa-solid fa-music"></i> 32 tracks</span><span><i class="fa-solid fa-globe"></i> 6 languages</span></div></div>
+    <div class="hero" id="heroCard"><div class="hero-bg" id="heroBg"></div><div class="hero-content"><div class="hero-copy"><div class="hero-badge"><span class="pulse"></span><span id="heroTag">FEATURED</span></div><h2 id="heroTitle">—</h2><p id="heroSub">—</p><div class="hero-actions"><button class="btnp" onclick="playHero()"><i class="fa-solid fa-play"></i> Play now</button><button class="btn-ghost" onclick="refreshHero()"><i class="fa-solid fa-shuffle"></i> Surprise me</button></div></div><div class="hero-art-wrap"><div class="hero-art-shadow"></div><img id="heroImg" class="hero-art" src="" alt="Featured cover"/><div class="art-eq"><i></i><i></i><i></i><i></i><i></i></div></div></div></div>
+    <div class="section-block"><div class="section-head"><div><p class="section-kicker">EXPLORE</p><h2>Choose your vibe</h2></div></div><div class="chips" id="chipsEl"></div></div>
+    <div class="section-block"><div class="section-head"><div><p class="section-kicker">CURATED FOR YOU</p><h2>Song of the Day</h2></div><button class="text-btn" onclick="renderSotd()">Refresh <i class="fa-solid fa-arrow-rotate-right"></i></button></div><div class="sotd" id="sotdEl"></div></div>
+    <div class="section-block" id="recentBlock" style="display:none"><div class="section-head"><div><p class="section-kicker">YOUR HISTORY</p><h2>Recently played</h2></div></div><div class="agrid" id="recentGrid"></div></div>
+    <div class="section-block"><div class="section-head"><div><p class="section-kicker">EDITOR'S PICKS</p><h2 id="trendH">Featured albums</h2></div><button class="text-btn" onclick="goSec('search')">Browse all <i class="fa-solid fa-arrow-right"></i></button></div><div class="agrid" id="trendGrid"></div></div>
+    <div class="section-block"><div class="section-head"><div><p class="section-kicker">KEEP EXPLORING</p><h2 id="moreH">More albums</h2></div></div><div class="agrid" id="moreGrid"></div></div>
+    <div class="section-block" id="statsBlock" style="display:none"><div class="section-head"><div><p class="section-kicker">YOUR LISTENING</p><h2>Listening snapshot</h2></div></div><div class="statgrid" id="statsGrid"></div></div>
   </section>
 
-  <!-- ALBUM DETAIL -->
-  <section class="sec" id="albumDetail">
-    <div class="back" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Back</div>
-    <div class="adh">
-      <img id="adImg" src="" alt=""/>
-      <div>
-        <p class="htag">ALBUM</p>
-        <h1 id="adName"></h1>
-        <p id="adArtist"></p>
-        <p id="adLang"></p>
-        <p id="adCount"></p>
-        <div style="margin-top:18px">
-          <button class="btnp" id="adPlayBtn"><i class="fa-solid fa-play"></i> Play All</button>
-        </div>
-      </div>
-    </div>
-    <div class="sth"><span>#</span><span>Title</span><span>Artist</span><span>Duration</span><span></span></div>
-    <div class="slist" id="adList"></div>
-  </section>
+  <section class="sec" id="albumDetail"><button class="back" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Back</button><div class="adh" id="albumHero"><div class="adh-art-wrap"><img id="adImg" src="" alt="Album cover"/></div><div class="adh-copy"><p class="eyebrow">ALBUM</p><h1 id="adName"></h1><p class="adh-artist" id="adArtist"></p><div class="adh-meta"><span id="adLang"></span><span>•</span><span id="adCount"></span></div><div class="adh-actions"><button class="btnp" id="adPlayBtn"><i class="fa-solid fa-play"></i> Play album</button><button class="round-btn" id="adAddBtn" title="Add album songs"><i class="fa-solid fa-plus"></i></button></div></div></div><div class="list-wrap"><div class="sth"><span>#</span><span>Title</span><span>Artist</span><span>Time</span><span></span></div><div class="slist" id="adList"></div></div></section>
 
-  <!-- SEARCH -->
-  <section class="sec" id="search">
-    <div class="sbar">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" id="searchQ" placeholder="Search songs, artists, albums, languages…" oninput="doSearch()"/>
-    </div>
-    <div class="sh"><h2>Browse by Language</h2></div>
-    <div class="ggrid" id="genreEl"></div>
-    <div class="sh" id="srH" style="display:none"><h2>Results</h2></div>
-    <div class="agrid" id="srGrid"></div>
-  </section>
+  <section class="sec" id="search"><div class="page-intro"><p class="eyebrow">DISCOVER</p><h1>Find your next favourite.</h1><p>Search across songs, artists, albums and languages.</p></div><div class="sbar"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="searchQ" placeholder="Try “Arijit”, “Pushpa”, “Tamil”..." oninput="doSearch()" autocomplete="off"/><button id="clearSearch" class="clear-search" onclick="clearSearch()" title="Clear"><i class="fa-solid fa-xmark"></i></button></div><div class="section-head compact"><div><p class="section-kicker">BROWSE</p><h2>Languages</h2></div></div><div class="ggrid" id="genreEl"></div><div class="search-result-head" id="srH" style="display:none"><h2>Results</h2><span id="resultCount"></span></div><div class="agrid" id="srGrid"></div></section>
 
-  <!-- FAVOURITES -->
-  <section class="sec" id="favourites">
-    <div class="favh">
-      <div class="favi"><i class="fa-solid fa-heart"></i></div>
-      <div><h1>Liked Songs</h1><p id="favCnt">0 songs</p></div>
-    </div>
-    <div class="pctrl">
-      <button class="btnp" onclick="playFavs()"><i class="fa-solid fa-play"></i> Play All</button>
-    </div>
-    <div class="sth"><span>#</span><span>Title</span><span>Artist</span><span>Duration</span><span></span></div>
-    <div class="slist" id="favList"><p class="empty">No liked songs yet. Hit ♥ on any song!</p></div>
-  </section>
-
-  <!-- PLAYLIST -->
-  <section class="sec" id="playlist">
-    <div class="plh">
-      <img src="https://picsum.photos/seed/pl/150/150" alt="Playlist"/>
-      <div><p class="htag">MY PLAYLIST</p><h1>All Songs</h1><p id="plCnt">0 songs</p></div>
-    </div>
-    <div class="pctrl">
-      <button class="btnp" onclick="playAll()"><i class="fa-solid fa-play"></i> Play All</button>
-    </div>
-    <div class="sth"><span>#</span><span>Title</span><span>Artist</span><span>Duration</span><span></span></div>
-    <div class="slist" id="plList"></div>
-  </section>
-
+  <section class="sec" id="favourites"><div class="collection-hero likes-hero"><div class="collection-icon"><i class="fa-solid fa-heart"></i></div><div><p class="eyebrow">YOUR COLLECTION</p><h1>Liked Songs</h1><p id="favCnt">0 songs</p></div></div><div class="collection-actions"><button class="btnp" onclick="playFavs()"><i class="fa-solid fa-play"></i> Play all</button></div><div class="list-wrap"><div class="sth"><span>#</span><span>Title</span><span>Artist</span><span>Time</span><span></span></div><div class="slist" id="favList"><p class="empty">No liked songs yet. Tap the heart on any track.</p></div></div></section>
+  <section class="sec" id="playlist"><div class="collection-hero playlist-hero"><div class="playlist-art" id="playlistArt"></div><div><p class="eyebrow">YOUR COLLECTION</p><h1>My Playlist</h1><p id="plCnt">0 songs</p></div></div><div class="collection-actions"><button class="btnp" onclick="playAll()"><i class="fa-solid fa-play"></i> Play all</button><button class="btn-ghost" onclick="clearPlaylist()"><i class="fa-solid fa-trash"></i> Clear</button></div><div class="list-wrap"><div class="sth"><span>#</span><span>Title</span><span>Artist</span><span>Time</span><span></span></div><div class="slist" id="plList"><p class="empty">Your playlist is empty. Add songs from any album.</p></div></div></section>
 </main>
 
-<!-- PLAYER -->
-<div class="player" id="playerEl" style="display:none">
-  <div class="ptrack">
-    <img id="pcover" src="" alt=""/>
-    <div class="pinfo">
-      <span id="ptitle">—</span>
-      <span id="partist">—</span>
-    </div>
-    <button class="hbtn" id="pheart" onclick="toggleCurFav()"><i class="fa-regular fa-heart"></i></button>
-  </div>
-  <div class="pcenter">
-    <div class="pctrlrow">
-      <button onclick="prevT()"><i class="fa-solid fa-backward-step"></i></button>
-      <button class="ppbtn" id="ppBtn" onclick="togglePlay()"><i class="fa-solid fa-play"></i></button>
-      <button onclick="nextT()"><i class="fa-solid fa-forward-step"></i></button>
-    </div>
-    <div class="progwrap">
-      <span id="ctime">0:00</span>
-      <div class="progbar" onclick="seekT(event)"><div class="progfill" id="progFill"></div></div>
-      <span id="ttime">0:00</span>
-    </div>
-  </div>
-  <div class="pright">
-    <i class="fa-solid fa-volume-high" style="color:var(--muted);font-size:.82rem"></i>
-    <input type="range" min="0" max="100" value="70" title="Volume"/>
-  </div>
-</div>
+<div class="player" id="playerEl"><div class="player-track" onclick="openNowPlaying()"><div class="cover-mini-wrap"><img id="pcover" src="" alt="Current cover"/><span class="playing-dot"></span></div><div class="pinfo"><strong id="ptitle">Choose a song</strong><span id="partist">Nothing playing yet</span></div><button class="hbtn" id="pheart" onclick="toggleCurFav(event)" title="Like"><i class="fa-regular fa-heart"></i></button></div><div class="pcenter"><div class="pctrlrow"><button id="shufBtn" onclick="toggleShuf()" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button><button onclick="prevT()" title="Previous"><i class="fa-solid fa-backward-step"></i></button><button class="ppbtn" id="ppBtn" onclick="togglePlay()" title="Play/Pause"><i class="fa-solid fa-play"></i></button><button onclick="nextT()" title="Next"><i class="fa-solid fa-forward-step"></i></button><button id="repBtn" onclick="toggleRep()" title="Repeat"><i class="fa-solid fa-repeat"></i></button></div><div class="progwrap"><span id="ctime">0:00</span><div class="progbar" onclick="seekT(event)"><div class="progfill" id="progFill"></div></div><span id="ttime">0:00</span></div></div><div class="pright"><button class="volume-btn" onclick="toggleMute()" title="Mute"><i id="volumeIcon" class="fa-solid fa-volume-high"></i></button><input id="volumeRange" type="range" min="0" max="100" value="70" title="Volume"/><button class="expand-player" onclick="openNowPlaying()" title="Now playing"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></button></div></div>
 
-<div class="toast" id="toastEl"></div>
-
-<script src="javascript.js"></script>
-</body>
-</html>
+<div class="now-playing" id="nowPlaying"><div class="np-backdrop" id="npBackdrop"></div><div class="np-top"><button class="icon-btn light" onclick="closeNowPlaying()"><i class="fa-solid fa-chevron-down"></i></button><span>NOW PLAYING</span><button class="icon-btn light" onclick="toast('More options coming soon')"><i class="fa-solid fa-ellipsis"></i></button></div><div class="np-content"><img id="npCover" src="" alt="Now playing cover"/><p class="eyebrow" id="npLang">—</p><h2 id="npTitle">—</h2><p id="npArtist">—</p><div class="np-progress"><span id="npTime">0:00</span><div class="progbar" onclick="seekT(event)"><div class="progfill" id="npFill"></div></div><span id="npDuration">0:00</span></div><div class="np-controls"><button onclick="prevT()"><i class="fa-solid fa-backward-step"></i></button><button class="np-play" onclick="togglePlay()" id="npPlay"><i class="fa-solid fa-play"></i></button><button onclick="nextT()"><i class="fa-solid fa-forward-step"></i></button></div><div class="np-actions"><button onclick="toggleCurFav(event)" id="npHeart"><i class="fa-regular fa-heart"></i> Like</button><button onclick="addCurrentToPlaylist()"><i class="fa-solid fa-plus"></i> Playlist</button></div></div></div>
+<div class="shortcuts-modal" id="shortcutsModal" onclick="if(event.target===this)closeShortcuts()"><div class="modal-card"><button class="modal-close" onclick="closeShortcuts()"><i class="fa-solid fa-xmark"></i></button><p class="eyebrow">QUICK CONTROLS</p><h2>Keyboard shortcuts</h2><div class="shortcut-row"><span>Play / Pause</span><kbd>Space</kbd></div><div class="shortcut-row"><span>Next track</span><kbd>→</kbd></div><div class="shortcut-row"><span>Previous track</span><kbd>←</kbd></div><div class="shortcut-row"><span>Search</span><kbd>Ctrl K</kbd></div><div class="shortcut-row"><span>Close player</span><kbd>Esc</kbd></div></div></div>
+<div class="toast" id="toastEl"></div><script src="javascript.js"></script>
+</body></html>
