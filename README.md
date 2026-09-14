@@ -1,12 +1,12 @@
-# 🎵 Playlist Gallery
+# Playlist Gallery
 
 A modern, responsive music discovery interface built with **HTML, CSS, and JavaScript**.
 
 Playlist Gallery is designed as a personal music space where users can explore songs, search across the catalogue, like tracks, build a personal playlist, and view listening statistics through a clean dark-themed interface.
 
-## 🌐 Live Demo
+##  Live Demo
 
-**[🚀 Open Playlist Gallery](https://rishithachappidi.github.io/Playlist-gallery/)**
+**[Open Playlist Gallery](https://rishithachappidi.github.io/Playlist-gallery/)**
 
 ## ✨ Features
 
