@@ -48,7 +48,7 @@ Playlist Gallery is designed as a personal music space where users can explore s
 | `javascript.js` | Music catalogue, interactions, search, playlist, favourites, and player logic |
 | `README.md` | Project documentation |
 
-## 🚀 Run Locally
+##  Run Locally
 
 No framework or build tool is required.
 
@@ -103,9 +103,7 @@ Possible future enhancements include:
 - Advanced analytics
 - Progressive Web App (PWA) support
 
-## Author
 
-**Rishitha Chappidi**
 
 GitHub: [@Rishithachappidi](https://github.com/Rishithachappidi)
 
