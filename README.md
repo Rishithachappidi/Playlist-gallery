@@ -8,28 +8,28 @@ Playlist Gallery is designed as a personal music space where users can explore s
 
 **[Open Playlist Gallery](https://rishithachappidi.github.io/Playlist-gallery/)**
 
-## ✨ Features
+## Features
 
-- 🎵 32-track music catalogue
-- 🌎 Music across 6 languages
-- 🔍 Search songs, artists, and albums
-- ❤️ Like and unlike songs
-- 📋 Build a personal playlist
-- ▶️ Play/pause interface
-- ⏭️ Previous and next track controls
-- 🔀 Shuffle mode
-- 🔁 Repeat mode
-- 🎚️ Progress and volume controls
-- 📊 Listening statistics
-- 🕘 Recently played section
-- 💾 Persistent data using LocalStorage
-- ⌨️ Keyboard shortcuts
-- 📱 Responsive layout for different screen sizes
-- 🌙 Premium dark-themed interface
+-  32-track music catalogue
+-  Music across 6 languages
+-  Search songs, artists, and albums
+-  Like and unlike songs
+-  Build a personal playlist
+-  Play/pause interface
+-  Previous and next track controls
+-  Shuffle mode
+-  Repeat mode
+-  Progress and volume controls
+-  Listening statistics
+-  Recently played section
+-  Persistent data using LocalStorage
+-  Keyboard shortcuts
+-  Responsive layout for different screen sizes
+-  Premium dark-themed interface
 
 > **Note:** The current version focuses on the interface and music-management experience. It does not include real audio playback or bundled music files.
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - **HTML5** — Page structure and semantic content
 - **CSS3** — Responsive layout, styling, animations, and visual design
@@ -37,15 +37,7 @@ Playlist Gallery is designed as a personal music space where users can explore s
 - **Git & GitHub** — Version control and project hosting
 - **GitHub Pages** — Public deployment
 
-## 📂 Project Structure
 
-```text
-Playlist-gallery/
-├── index.html
-├── styless.css
-├── javascript.js
-└── README.md
-```
 
 ### File Overview
 
@@ -76,7 +68,7 @@ cd Playlist-gallery
 
 That's it — the project runs directly in the browser.
 
-## 💾 Data Persistence
+## Data Persistence
 
 Playlist Gallery uses the browser's **LocalStorage** to preserve user-side data such as:
 
@@ -88,7 +80,7 @@ Playlist Gallery uses the browser's **LocalStorage** to preserve user-side data 
 
 This means the data is stored locally in the user's browser rather than on a remote server.
 
-## 🎨 Design
+## Design
 
 The interface follows a modern dark music-app aesthetic with:
 
@@ -99,7 +91,7 @@ The interface follows a modern dark music-app aesthetic with:
 - Dedicated search and playlist views
 - Mobile-friendly layout
 
-## 🔮 Future Improvements
+##  Future Improvements
 
 Possible future enhancements include:
 
@@ -111,7 +103,7 @@ Possible future enhancements include:
 - Advanced analytics
 - Progressive Web App (PWA) support
 
-## 👩‍💻 Author
+## Author
 
 **Rishitha Chappidi**
 
@@ -119,4 +111,4 @@ GitHub: [@Rishithachappidi](https://github.com/Rishithachappidi)
 
 ---
 
-⭐ If you like the project, consider giving the repository a star!
+If you like the project, consider giving the repository a star!
