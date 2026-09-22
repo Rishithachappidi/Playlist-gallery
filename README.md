@@ -105,8 +105,4 @@ Possible future enhancements include:
 
 
 
-GitHub: [@Rishithachappidi](https://github.com/Rishithachappidi)
 
----
-
-If you like the project, consider giving the repository a star!
